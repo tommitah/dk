@@ -2,12 +2,39 @@
 #########################################################
 
 # launcher
-super + p
+super + shift + p
 	dmenu_run
+
+super + p
+	$HOME/.config/rofi/launchers/type-1/launcher.sh
 
 # terminal
 super + Return
 	wezterm
+
+super + b
+    firefox
+
+super + d
+    Discord
+
+super + y
+    spotify
+
+super + n
+    playerctl next
+
+super + shift + n
+    playerctl previous
+
+super + shift + e
+    pulseaudio-equalizer-gtk
+
+super + ctrl + a
+    setxkbmap -layout us
+
+super + ctrl + s
+    setxkbmap -layout fi
 
 # screenshot and selection capture
 {_,alt + }@Print
@@ -70,7 +97,7 @@ alt + ctrl + {h,j,k,l}
 	dkcmd win resize {w=-20,h=+20,h=-20,w=+20}
 
 # move the active window up/down the stack
-super + {j,k}
+super + shift + {k,j}
 	dkcmd win mvstack {up,down}
 
 # view, send, or follow to a workspace (by number)
