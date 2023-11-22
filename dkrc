@@ -26,8 +26,8 @@ elif [ $dpi -ge 120 ]; then
 	border_width=5
 	border_outer_width=2
 else
-	border_width=5
-	border_outer_width=1
+	border_width=7
+	border_outer_width=2
 fi
 
 { # compound command to redirect all output
@@ -40,19 +40,19 @@ fi
 
 	# default workspace '_' values used when allocating new workspaces
 	# can be applied to all existing workspaces when passed 'apply' after ws=_
-	dkcmd set ws=_ apply layout=rtile master=1 stack=3 gap=0 msplit=0.5 ssplit=0.5
+	dkcmd set ws=_ apply layout=rtile master=1 stack=3 gap=25 msplit=0.5 ssplit=0.5
     dkcmd set ws=5 layout=none master=1 stack=3 gap=0 msplit=0.5 ssplit=0.5
 
 	# use grid layout, padding, and gaps on workspace 10
 	# dkcmd set ws=10 layout=grid pad left=200 right=200 top=100 bottom=100 gap=50
 
 	# change workspace names (default: number == name)
-	# dkcmd set \
-	# 	ws=1  name="edit" \
-	# 	ws=2  name="web" \
-	# 	ws=3  name="😀" \
-	# 	ws=4  name="😠" \
-	# 	ws=5  name="5" \
+	dkcmd set \
+		ws=1  name="" \
+		ws=2  name="" \
+		ws=3  name="󰈹" \
+		ws=4  name="󰙯" \
+		ws=5  name="" \
 	# 	ws=6  name="6" \
 	# 	ws=7  name="7" \
 	# 	ws=8  name="8" \
@@ -93,7 +93,8 @@ fi
 	dkcmd set win_minwh=50 win_minxy=10
 
 	# disable gaps and borders in single window layouts
-	dkcmd set smart_gap=true smart_border=true
+	# dkcmd set smart_gap=true smart_border=true
+	dkcmd set smart_gap=false smart_border=true
 
 	# define mouse mod and move/resize buttons
 	dkcmd set mouse mod=super move=button1 resize=button3
@@ -109,23 +110,77 @@ fi
 	# alternative
 	# enable split borders and colours, width is overall width, outer_width consumes some of width.
 	# outer_width must be less than width, outer_width of 0 will be single borders
-	# dkcmd set border width=$border_width outer_width=$border_outer_width \
-	# 	colour \
-	# 	focus='#002129' \
-	# 	unfocus='#073642' \
-	# 	urgent='#ee5555' \
-	# 	outer_focus='#002129' \
-	# 	outer_unfocus='#073642' \
-	# 	outer_urgent='#222222'
-
 	dkcmd set border width=$border_width outer_width=$border_outer_width \
 		colour \
-		focus='#000000' \
-		unfocus='#1d2021' \
+		focus='#002129' \
+		unfocus='#073642' \
 		urgent='#ee5555' \
-		outer_focus='#C8C093' \
-		outer_unfocus='#1d2021' \
+		outer_focus='#D8DEE9' \
+		outer_unfocus='#073642' \
 		outer_urgent='#222222'
+
+	# dkcmd set border width=$border_width outer_width=$border_outer_width \
+	# 	colour \
+	# 	focus='#000000' \
+	# 	unfocus='#181616' \
+	# 	urgent='#B48EAD' \
+	# 	outer_focus='#D8DEE9' \
+	# 	outer_unfocus='#181616' \
+	# 	outer_urgent='#B48EAD'
+
+	# dkcmd set border width=$border_width outer_width=$border_outer_width \
+	# 	colour \
+	# 	focus='#000000' \
+	# 	unfocus='#2E3440' \
+	# 	urgent='#B48EAD' \
+	# 	outer_focus='#D8DEE9' \
+	# 	outer_unfocus='#2E3440' \
+	# 	outer_urgent='#B48EAD'
+
+	# dkcmd set border width=$border_width outer_width=$border_outer_width \
+	# 	colour \
+	# 	focus='#000000' \
+	# 	unfocus='#1d2021' \
+	# 	urgent='#ee5555' \
+	# 	outer_focus='#C8C093' \
+	# 	outer_unfocus='#1d2021' \
+	# 	outer_urgent='#222222'
+
+	# dkcmd set border width=$border_width outer_width=$border_outer_width \
+	# 	colour \
+	# 	focus='#191D24' \
+	# 	unfocus='#191D24' \
+	# 	urgent='#BF616A' \
+	# 	outer_focus='#c3e88d' \
+	# 	outer_unfocus='#191D24' \
+	# 	outer_urgent='#222222'
+
+	# dkcmd set border width=$border_width outer_width=$border_outer_width \
+	# 	colour \
+	# 	focus='#191D24' \
+	# 	unfocus='#191D24' \
+	# 	urgent='#BF616A' \
+	# 	outer_focus='#859900' \
+	# 	outer_unfocus='#191D24' \
+	# 	outer_urgent='#222222'
+
+	# dkcmd set border width=$border_width outer_width=$border_outer_width \
+	# 	colour \
+	# 	focus='#191D24' \
+	# 	unfocus='#191D24' \
+	# 	urgent='#BF616A' \
+	# 	outer_focus='#3B4252' \
+	# 	outer_unfocus='#191D24' \
+	# 	outer_urgent='#222222'
+
+	# dkcmd set border width=$border_width outer_width=$border_outer_width \
+	# 	colour \
+	# 	focus='#F0EDEC' \
+	# 	unfocus='#D8DEE9' \
+	# 	urgent='#ee5555' \
+	# 	outer_focus='#1C1917' \
+	# 	outer_unfocus='#D8DEE9' \
+	# 	outer_urgent='#222222'
 
 
 	# window rules
@@ -135,6 +190,9 @@ fi
 
 	# open window(s) on a specific workspace (assigned monitor)
 	dkcmd rule class="^gimp$" ws=2
+    dkcmd rule class="^steam$" ws=1
+    dkcmd rule class="^spotify$" ws=4
+    dkcmd rule class="^discord$" ws=4
 
 	# open window(s) on a monitor by number or name (active workspace on monitor)
 	# dkcmd rule class="^chromium$" mon="HDMI-A-0"
@@ -142,10 +200,10 @@ fi
 	# open window(s) and use a callback function (user defined in config.h)
 	# we also ignore=true to stop the window from being resized on it's own from events
 	# eg. mpv --x11-name=albumart /path/to/media
-	dkcmd rule class="^mpv$" instance="^albumart$" float=true ignore=true callback=albumart bw=0
+	# dkcmd rule class="^mpv$" instance="^albumart$" float=true ignore=true callback=albumart bw=0
 
 	# open window(s) in a floating state
-	dkcmd rule class="^(pavucontrol|transmission-gtk|zapzap|steam|lxappearance)$" float=true
+	dkcmd rule class="^(pavucontrol|transmission-gtk|zapzap|lxappearance)$" float=true
 
 	# open window(s) with a specific geometry and coordinates (floating only!)
 	dkcmd rule class="^google-chrome$" title="^open files$" float=true w=1280 h=720

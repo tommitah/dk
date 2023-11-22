@@ -2,18 +2,26 @@
 #########################################################
 
 # launcher
-super + shift + p
-	dmenu_run
-
 super + p
+    dmenu_run -p 'blast: ' -fn 'Iosevka:size=16' -nb '#222436' -sb '#EEE8D5' -sf '#2E3440'
+  # dmenu_run -p 'blast: ' -fn 'Iosevka:size=16' -nb '#002B36' -sb '#EEE8D5' -sf '#2E3440'
+	# dmenu_run -p 'blast: ' -fn 'Iosevka:size=16' -nb '#F0EDEC' -sb '#181616' -sf '#F0EDEC'
+
+super + shift + p
 	$HOME/.config/rofi/launchers/type-1/launcher.sh
 
 # terminal
 super + Return
 	wezterm
 
+super + shift + t
+    wmctrl -a tmux
+
+super + shift + b
+    wmctrl -a Firefox || firefox
+
 super + b
-    firefox
+    flatpak run com.brave.Browser
 
 super + d
     Discord
@@ -106,7 +114,7 @@ super + {_,shift + ,ctrl + }{1-9,0}
 
 # view, send, or follow to the next, previous, last active,
 # next non-empty, or prev non-empty workspace
-super + {_,shift + ,ctrl + }{bracketleft,bracketright,BackSpace,Left,Right}
+super + {_,shift + ,ctrl + }{h,l,BackSpace,Left,Right}
 	dkcmd ws {view,send,follow} {prev,next,last,prevne,nextne}
 
 # view, send, or follow to the next, previous, or last active monitor
